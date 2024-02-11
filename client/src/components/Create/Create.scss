@@ -1,0 +1,35 @@
+.product-preview {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+
+  .img-area {
+    height: 120px;
+    width: 150px;
+    margin: 5px;
+    position: relative;
+    &:hover button {
+        opacity: 1;
+    }
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button {
+      border: none;
+      color: red;
+      background: transparent;
+      font-size: 25px;
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      opacity: .4;
+      transition: all .1s ease-in;
+    }
+  }
+}
