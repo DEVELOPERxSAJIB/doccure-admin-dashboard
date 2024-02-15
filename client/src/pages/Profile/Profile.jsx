@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import { useEffect, useState } from "react";
 import {
+  getLoggedInUserData,
   updateSingleUser,
   updateUserPasswrod,
 } from "../../features/auth/authApiSlice";
@@ -13,8 +14,6 @@ const Profile = () => {
   const navigate = useNavigate();
 
   const { user, error, message, loader } = useSelector((state) => state.auth);
-
-  console.log(user);
 
   const [input, setInput] = useState({
     oldPassword: "",
@@ -77,7 +76,9 @@ const Profile = () => {
     form_data.append("country", modalInput.country);
     form_data.append("zipcode", modalInput.zipcode);
 
-    dispatch(updateSingleUser(form_data));
+    dispatch(updateSingleUser(form_data)).then((res) => {
+      dispatch(getLoggedInUserData())
+    });
   };
 
   useEffect(() => {
