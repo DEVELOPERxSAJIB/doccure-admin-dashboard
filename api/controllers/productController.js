@@ -78,6 +78,10 @@ export const createProduct = asyncHandler(async (req, res) => {
     }
   }
 
+  if(productType === "simpleProduct") {
+    await Product.create()
+  }
+
   console.log(productPhotos);
 
   // create new product
